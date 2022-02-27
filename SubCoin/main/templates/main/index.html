@@ -1,0 +1,14 @@
+{%extends 'main/default.html'%}
+
+{% block title%}Home{% endblock%}
+{%block content%}
+    {% for e in price%}
+        <div class="row">
+            <div class="alert alert-primary mt-2">
+                <h1>{{e.name}}</h1>
+                <p2 class = "fs-5">{{e.price}}$</p2><br>
+                <p1>{{e.updated}}</p1><br>
+            </div>
+        </div>
+    {%endfor%}
+{%endblock%}

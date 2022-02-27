@@ -1,0 +1,35 @@
+{%extends 'main/default.html'%}
+
+{% block title%}Discussion{% endblock%}
+
+{%block buts%}
+<li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+<li><a href="{% url 'discussion'%}" class="nav-link px-2 text-secondary">Discussion</a></li>
+{%endblock%}
+
+{% block search%}{%endblock%}
+
+{%block content%}
+    {% if comments%}
+        {%for e in comments%}
+        <div class="alert alert-secondary mt-1">
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <p2 class="fw-light">{{e.date}}</p2><br>
+            </div>
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <p2 class="fs-4">{{e.text}}</p2>
+            </div>
+        </div>
+        {%endfor%}
+    {% else%}
+        <h1>Not Comments!</h1>
+    {%endif%}
+        <form method="post">
+            {%csrf_token%}
+            <div class="form-floating">
+                {{form.text}}<br>
+                <label for = "CommentTextArea">Comment</label>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Отправить</button>
+        </form>
+{%endblock%}
